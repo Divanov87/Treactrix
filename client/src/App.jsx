@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Dashboard from './components/home/dashboard/Dashboard.jsx';
+import ScrollToTop from './components/scroll-to-top/ScrolToTop';
 import Footer from "./components/footer/Footer.jsx";
 import { AuthProvider } from './context/AuthContext.jsx';
 import PWABadge from './PWABadge.jsx'
@@ -25,9 +26,10 @@ export default function App() {
         <Route path="/auth/register" element={<Register />} />
         <Route path="/auth/login" element={<Login />} />
       </Routes>
-      <Footer />
-      <PWABadge />
       <PWABanner/>
+      <PWABadge />
+      <ScrollToTop/>
+      <Footer />
       </AuthProvider>
     </>
   )
