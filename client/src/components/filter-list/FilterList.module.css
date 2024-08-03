@@ -1,0 +1,32 @@
+.filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-btn {
+    color: var(--white);
+    background: var(--raisin-black);
+    font-size: var(--fs-11);
+    font-weight: var(--fw-500);
+    border: 2px solid var(--gunmetal-1);
+    padding: 12px 26px;
+    border-radius: 50px;
+}
+
+.filter-btn:hover {
+    background: url("/assets/images/masks.png") no-repeat;
+    background-size: cover;
+}
+
+.filter-btn:focus {
+    background: var(--theatrix-red);
+    border: none;
+}
+
+.filter-btn-all {
+    background-color:  #e60a15;
+    border: initial;
+}
