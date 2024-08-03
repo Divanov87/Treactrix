@@ -1,0 +1,152 @@
+.cta{
+  background-color:#000;
+  background-size:cover;
+  background-position:center;
+  text-align:center;
+  padding-block:50px
+}
+.cta .title-wrapper{
+  margin-bottom:25px
+}
+.cta-title{
+  color:var(--white);
+  font-size:var(--fs-3);
+  text-transform:uppercase;
+  line-height:1.2;
+  margin-bottom:5px
+}
+.cta-text{
+  color:var(--light-gray);
+  font-size:var(--fs-9);
+  font-weight:var(--fw-500);
+  line-height:1.8;
+  padding-right: 20px;
+}
+.cta .email-field{
+  color:var(--eerie-black);
+  font-size:var(--fs-9);
+  padding:18px 32px;
+  border-radius:50px;
+  box-shadow:0 3px 4px hsla(0,0%,0%,.2);
+  margin-bottom:15px
+}
+.cta-form-btn{
+  background:var(--theatrix-red);
+  color:var(--white);
+  font-size:var(--fs-9);
+  font-weight:var(--fw-700);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  border:2px solid var(--theatrix-red);
+  padding:15px 34px;
+  border-radius:50px;
+  margin-inline:auto;
+  transition:var(--transition-1)
+}
+.cta-form-btn:is(:hover,:focus){
+  background:red;
+  color:var(--white);
+  border:2px solid red
+}
+@media (min-width:550px){
+  :root{
+      --fs-1:42px
+  }
+  .container{
+      max-width:540px;
+      margin-inline:auto
+  }
+}
+@media (min-width:768px){
+  :root{
+      --fs-2:36px
+  }
+  .container{
+      max-width:720px
+  }
+}
+.cta-form{
+  position:relative;
+  max-width:530px;
+  margin-inline:auto
+}
+.cta .email-field{
+  margin-bottom:0
+}
+input:focus{
+  outline:0
+}
+.cta-form-btn{
+  position:absolute;
+  top:2px;
+  right:2px;
+  bottom:2px
+}
+@media (min-width:550px){
+  :root{
+      --fs-1:42px
+  }
+  .container{
+      max-width:540px;
+      margin-inline:auto
+  }
+}
+@media (min-width:768px){
+  :root{
+      --fs-2:36px
+  }
+  .container{
+      max-width:720px
+  }
+  .cta-form{
+      position:relative;
+      max-width:530px;
+      margin-inline:auto
+  }
+  .cta .email-field{
+      margin-bottom:0
+  }
+  input:focus{
+      outline:0
+  }
+  .cta-form-btn{
+      position:absolute;
+      top:2px;
+      right:2px;
+      bottom:2px
+  }
+}
+@media (min-width:992px){
+  .container{
+      max-width:960px
+  }
+  .cta{
+      text-align:left
+  }
+  .cta .container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center
+  }
+  .cta .title-wrapper{
+      margin-bottom:0;
+      width:100%
+  }
+  .cta-form{
+      margin-inline:0;
+      max-width:unset;
+      width:100%
+  }
+}
+@media (min-width:1200px){
+  :root{
+      --fs-1:60px;
+      --fs-4:26px
+  }
+  .container{
+      max-width:1320px
+  }
+  .cta .container{
+      max-width:1150px
+  }
+}
