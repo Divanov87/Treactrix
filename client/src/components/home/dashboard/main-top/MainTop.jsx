@@ -1,14 +1,25 @@
 import { Link, useNavigate } from 'react-router-dom';
 
+import { useAuth } from '../../../../context/AuthContext';
+
 import styles from './MainTop.module.css';
 
 
 
 
 export default function MainTop() {
-  const isLogged = true;
-  const user = 'JohnDoe';
+  // const isLogged = true;
+  // const username = 'JohnDoe';
 
+  const { user, isLogged } = useAuth();
+
+  const navigate = useNavigate();
+
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    const searchValue = e.target.elements.name.value.trim();
+    navigate(`/search?name=${searchValue}`);
+  };
 
   return (
     <>
@@ -17,7 +28,7 @@ export default function MainTop() {
           <div className={styles['hero-content']}>
             {isLogged ? (
               <p className={styles['hero-subtitle']}>
-                Welcome, <b style={{ color: 'white', textTransform: 'capitalize' }}>{user}</b>!
+                Welcome, <b style={{ color: 'white', textTransform: 'capitalize' }}>{user?.username}</b>!
               </p>
             ) : (
               <p className={styles['hero-subtitle']}>Theatrix</p>
@@ -52,7 +63,7 @@ export default function MainTop() {
 
             <br />
 
-            <form className={styles['src']}>
+            <form className={styles['src']} onSubmit={searchSubmit}>
               <input type="text" id={`${styles['search-input']}`} name="name" placeholder="Search..." />
               <button type="submit" className={`${styles['search-btn']} ${styles['vertical']}`}>
                 &nbsp;&nbsp;<i className="bx bx-search"></i>
