@@ -1,17 +1,19 @@
-import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const Dashboard = lazy(() => import('./components/home/dashboard/Dashboard'));
+import Dashboard from './components/home/dashboard/Dashboard.jsx';
+import Footer from "./components/footer/Footer.jsx";
 
 import PWABadge from './PWABadge.jsx'
+
 
 export default function App() {
 
   return (
     <>
-          <Routes>
-          <Route path="/" element={<Dashboard />} />
-          </Routes>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
+      <Footer />
       <PWABadge />
     </>
   )
