@@ -259,26 +259,6 @@ router.post('/:eventId/unlike', async (req, res) => {
             res.status(400).json({ error: getErr(err) });
         }
     });
-
-// ---------------------------------LIKE 2 --------------------------------------------------
-
-// router.get('/:eventId/like', async (req, res) => {
-//     try {
-//         Event.findById(eventId).populate('owner')
-//         const event = await getOne(req.body.eventId)
-//         if (event.owner._id != req.body.eventId && Event.likesList.map(x => x.includes(req.body.userId) == false)) {
-//             try {
-//                 await like(req.body.eventId, req.body.userId);
-//                 const event = await getOne(req.body.eventId)
-//                 return res.status(200).json(like)
-//             } catch (error) {
-//                 res.status(400).json({ err: error.message })
-//             }
-//         }
-//     } catch (err) {
-//         res.status(400).json({ error: getErr(err) });
-//     }
-//     });
     
 
 // ---------------------------------PIN--------------------------------------------------
@@ -319,22 +299,6 @@ router.post('/:eventId/unpin', async (req, res) => {
     }
 });
 
-// router.get('/near', isAuth, async (req, res) => {
-//     try {
-
-//         const city = res.locals.location;
-
-//         const topRatedEvents = await eventsService.getEventsSortedByRatingLogged(city);
-//         const theaterEvents = await eventsService.getEventsByCategoryLogged('Theater', city);
-//         const concertEvents = await eventsService.getEventsByCategoryLogged('Concert', city);
-
-//         res.status(200).json({ latestPins, topRatedEvents, theaterEvents, concertEvents });
-
-//     } catch (error) {
-//         console.error('Error in home route:', error);
-//         res.status(500).json({ error: 'Internal server error' });
-//     }
-// });
 
 router.post('/:eventId/clone', async (req, res) => {
     
