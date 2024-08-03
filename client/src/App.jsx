@@ -7,7 +7,7 @@ import PWABadge from './PWABadge.jsx'
 
 
 
-
+import PWABanner  from './components/pwa-banner/PWABanner.jsx';
 
 
 import Header from "./components/header/Header.jsx";
@@ -23,6 +23,7 @@ export default function App() {
       </Routes>
       <Footer />
       <PWABadge />
+      <PWABanner/>
       </AuthProvider>
     </>
   )
