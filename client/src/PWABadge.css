@@ -1,0 +1,32 @@
+.PWABadge-container {
+    padding: 0;
+    margin: 0;
+    width: 0;
+    height: 0;
+}
+.PWABadge-toast {
+    position: fixed;
+    right: -20px;
+    bottom: 70px;
+    margin: 16px;
+    padding: 12px;
+    border: 1px solid #8885;
+    border-radius: 4px;
+    z-index: 1;
+    text-align: left;
+    box-shadow: 3px 4px 5px 0 #8885;
+    background: rgb(255, 255, 255, 1);
+}
+.PWABadge-toast-message {
+    margin-bottom: 8px;
+}
+.PWABadge-toast-button {
+    margin-top: 10px;
+    border: 1px solid #8885;
+    outline: none;
+    margin-left: 2px;
+    border-radius: 16px;
+    padding: 0px 88px;
+    background:  #e60a15;
+
+}

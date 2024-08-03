@@ -1,0 +1,142 @@
+@import url("../../../../styles.css");
+
+.service{
+    background:url("/assets/images/banner-details.jpg") no-repeat;
+    background-size:cover;
+    background-position:center;
+    padding-block:var(--section-padding)
+}
+.service-banner{
+    position:relative;
+    margin-bottom:50px;
+    max-width:max-content
+}
+.service-banner img{
+    width:100%
+}
+.service-subtitle{
+    position:relative;
+    color:var(--gainsboro);
+    font-size:var(--fs-11);
+    font-weight:var(--fw-500);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    padding-left:50px;
+    margin-bottom:10px
+}
+.service-subtitle::before{
+    content:"";
+    position:absolute;
+    top:7px;
+    left:0;
+    width:40px;
+    height:3px;
+    background:var(--theatrix-red)
+}
+.service-title{
+    margin-bottom:20px
+}
+.service-card .card-text,.service-text{
+    color:var(--gray-x);
+    font-size:var(--fs-9);
+    font-weight:var(--fw-500);
+    line-height:1.8
+}
+.service-text{
+    margin-bottom:40px
+}
+.service-list>li:first-child{
+    padding-bottom:20px;
+    border-bottom:1px dashed hsla(0,0%,100%,.1);
+    margin-bottom:30px
+}
+.service-card .card-icon{
+    color:var(--white);
+    width:85px;
+    height:85px;
+    display:grid;
+    place-items:center;
+    font-size:40px;
+    border-radius:50%;
+    outline:1px dashed var(--theatrix-red);
+    outline-offset:5px;
+    margin:5px;
+    margin-bottom:20px;
+    transition:var(--transition-2)
+}
+.service-card:hover .card-icon{
+    background:var(--theatrix-gray)
+}
+.service-card .card-title{
+    margin-bottom:10px
+}
+@media (min-width:550px){
+    :root{
+        --fs-1:42px
+    }
+    .container{
+        max-width:540px;
+        margin-inline:auto
+    }
+    .service-list>li:first-child{
+        padding-bottom:30px
+    }
+    .service-card{
+        display:flex;
+        align-items:center;
+        gap:20px
+    }
+    .service-card .card-icon{
+        margin-bottom:0
+    }
+    .service-card .card-content{
+        width:calc(100% - 115px)
+    }
+}
+@media (min-width:768px){
+    :root{
+        --fs-2:36px
+    }
+    .container{
+        max-width:720px
+    }
+    .service-content{
+        padding-inline:40px
+    }
+}
+@media (min-width:992px){
+    .container{
+        max-width:960px
+    }
+    .service .container{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:70px
+    }
+    .service-content{
+        padding-inline:0;
+        width:calc(100% - 470px)
+    }
+    .service-banner{
+        margin-bottom:0
+    }
+}
+@media (min-width:1200px){
+    :root{
+        --fs-1:60px;
+        --fs-4:26px
+    }
+    .container{
+        max-width:1320px
+    }
+    .service-content{
+        width:calc(100% - 700px)
+    }
+    .service-list,.service-title{
+        max-width:480px
+    }
+}
+.bxs-coupon{
+    transform:rotate(-45deg)
+}
