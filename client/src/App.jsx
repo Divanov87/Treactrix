@@ -23,6 +23,7 @@ const Register = lazy(() => import('./components/auth/register/Register'));
 const Login = lazy(() => import('./components/auth/login/Login'));
 
 import NotFound from "./components/not-found/NotFound.jsx";
+import EventCatalog from './components/events/event-catalog/EventCatalog.jsx';
 
 export default function App() {
 
@@ -34,6 +35,7 @@ export default function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/events" element={<EventCatalog />} />
               <Route path="/auth/register" element={<Register />} />
               <Route path="/auth/login" element={<Login />} />
               <Route path="/404" element={<NotFound />} />
