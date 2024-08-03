@@ -1,0 +1,134 @@
+.h2{
+    font-size:var(--fs-1);
+    line-height: 1.2;
+    color: white;
+}
+.top-rated{
+    background:url(/assets/images/bg-fixed-overlay.jpg) no-repeat;
+    background-size:cover;
+    background-position:center;
+    padding-block:var(--section-padding);
+    background-attachment:fixed
+}
+.top-rated .section-title{
+    margin-bottom:50px
+}
+.h2{
+    font-size:var(--fs-2)
+}
+.section-subtitle{
+    color:var(--theatrix-red);
+    font-size:var(--fs-11);
+    font-weight:var(--fw-500);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:10px;
+    text-align:center;
+    padding-top:50px
+}
+.section-title{
+    text-align:center
+}
+.movies-list{
+    display:grid;
+    gap:50px
+}
+.movie-card{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between
+}
+.movie-card .card-banner{
+    position:relative;
+    background:var(--gunmetal-1);
+    aspect-ratio:2/3;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:20px;
+    transition:var(--transition-1)
+}
+.movie-card .card-banner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    transition:var(--transition-1)
+}
+.movie-card .card-banner:hover{
+    box-shadow:0 1px 2px hsla(0,0%,0%,.5)
+}
+.movie-card .card-banner:hover::after{
+    background:hsla(0,0%,100%,.05)
+}
+.movie-card .card-banner img{
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+.movie-card .card-title{
+    color:var(--white);
+    font-size:var(--fs-7);
+    transition:var(--transition-1)
+}
+.movie-card .card-title:is(:hover,:focus){
+    color:var(--theatrix-red)
+}
+@media (min-width:550px){
+    :root{
+        --fs-1:42px
+    }
+    .container{
+        max-width:540px;
+        margin-inline:auto
+    }
+    .movies-list{
+        grid-template-columns:1fr 1fr;
+        gap:60px 30px
+    }
+}
+@media (min-width:768px){
+    :root{
+        --fs-2:36px
+    }
+    .container{
+        max-width:720px
+    }
+}
+@media (min-width:992px){
+    .movies-list{
+        grid-template-columns:repeat(3,1fr)
+    }
+}
+@media (min-width:1200px){
+    :root{
+        --fs-1:60px;
+        --fs-4:26px
+    }
+    .container{
+        max-width:1320px
+    }
+    .movies-list{
+        grid-template-columns:repeat(4,1fr)
+    }
+}
+.list-404{
+    display:flex
+}
+.btn-404{
+    background:var(--theatrix-red);
+    color:var(--white);
+    font-size:var(--fs-9);
+    font-weight:var(--fw-700);
+    text-transform:uppercase;
+    letter-spacing:1px;
+    border:2px solid var(--theatrix-red);
+    padding:15px 34px;
+    border-radius:50px;
+    margin-inline:auto;
+    transition:var(--transition-1)
+}
+.btn-404:is(:hover,:focus){
+    background:var(--theatrix-white);
+    color:var(--white);
+    border:2px solid var(--white)
+}
