@@ -1,0 +1,254 @@
+@import url("../../../styles.css");
+
+.movie-detail{
+  background:url(/assets/images/banner-details.jpg) no-repeat;
+  background-size:cover;
+  background-position:center;
+  padding-bottom:var(--section-padding);
+  background-attachment:fixed;
+  padding-top:100px
+}
+.detail-mask::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:160%;
+  background-color:rgba(0,0,0,.8)
+}
+.movie-detail-banner{
+  position:relative;
+  background:var(--gunmetal-1);
+  max-width:300px;
+  margin-inline:auto;
+  border-radius:6px;
+  overflow:hidden;
+  margin-bottom:50px
+}
+.movie-detail-banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+.detail-subtitle{
+  font-size:var(--fs-5);
+  color:var(--theatrix-red);
+  font-weight:var(--fw-700);
+  margin-bottom:10px
+}
+.detail-title{
+  margin-bottom:20px
+}
+.detail-title strong{
+  color:var(--theatrix-red)
+}
+.movie-detail .meta-wrapper{
+  margin-bottom:30px
+}
+.storyline{
+  color:var(--gray-x);
+  font-size:var(--fs-9);
+  font-weight:var(--fw-500);
+  line-height:1.8;
+  margin-bottom:40px
+}
+.details-actions{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:20px 40px;
+  max-width:100%;
+  flex-direction:row;
+  padding-bottom:0;
+  border-top:1px solid var(--white);
+  margin-bottom:30px;
+  padding-top:20px
+}
+.details-actions .share span{
+  color:var(--white);
+  font-size:var(--fs-11);
+  transition:var(--transition-1)
+}
+.details-actions .share:is(:hover,:focus) span{
+  color:var(--white)
+}
+.details-actions .title{
+  color:var(--white);
+  font-weight:var(--fw-700)
+}
+.details-actions .btn-primary{
+  letter-spacing:0;
+  background:var(--theatrix-red);
+  border:1px solid red
+}
+
+.download-btn{
+  left:auto;
+  bottom:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+  font-size:18px;
+  height:220px;
+  padding-bottom:22px;
+  background-color:#fff;
+  color: white;
+  border:2px solid red;
+  border-radius:20px;
+  margin-inline:auto;
+  width:39%;
+  position:relative;
+  cursor:pointer
+}
+.qr{
+  background-color:red;
+  color:#fff;
+  text-align:center;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+  margin:-2px;
+  width:100%;
+  position:absolute;
+  bottom:0
+}
+.qr:is(:hover,:focus) span{
+  background:var(--theatrix-red);
+  color:var(--white);
+  display:none
+}
+.qr:is(:hover,:focus):before{
+  content:"Send to mobile";
+  font-size:18px;
+}
+@media (min-width:550px){
+  :root{
+      --fs-1:42px
+  }
+  .container{
+      max-width:540px;
+      margin-inline:auto
+  }
+  .detail-subtitle{
+      --fs-5:22px
+  }
+  .detail-title{
+      --fs-1:46px
+  }
+  .download-btn{
+      width:150px
+  }
+}
+@media (min-width:768px){
+  :root{
+      --fs-2:36px
+  }
+  .container{
+      max-width:720px
+  }
+  .detail-subtitle{
+      --fs-5:26px
+  }
+  .detail-title{
+      --fs-1:50px
+  }
+  .download-btn{
+      width:150px
+  }
+}
+@media (min-width:992px){
+  .movie-detail{
+      padding-bottom:200px
+  }
+  .movie-detail .container{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:50px;
+      padding-top:50px
+  }
+  .details-actions,.movie-detail-banner{
+      margin:0
+  }
+  .download-btn{
+      width:150px
+  }
+}
+@media (min-width:1200px){
+  :root{
+      --fs-1:60px;
+      --fs-4:26px
+  }
+  .container{
+      max-width:1320px
+  }
+  .movie-detail{
+      padding-bottom:var(--section-padding)
+  }
+  .movie-detail-content{
+      max-width:620px;
+      justify-content:center;
+      align-items:center
+  }
+  .detail-title{
+      --fs-1:60px
+  }
+  .download-btn{
+      width:150px
+  }
+}
+.btn{
+  color:var(--white);
+  font-size:var(--fs-11);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 30px;
+  border:2px solid var(--light-gray);
+  border-radius:50px;
+  transition:var(--transition-1);
+}
+.btn-primary:is(:hover){
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+
+}
+.sold-out{
+  font-size:12px;
+  padding:13px 33px;
+  letter-spacing:0;
+  background-color:#ccc;
+  cursor:not-allowed;
+  border-radius:50px;
+  text-transform:uppercase
+}
+.bx-pin,.bxs-pin{
+  transform:rotate(45deg)
+}
+.bxs-coupon{
+  transform:rotate(-45deg)
+}
+.bx-timer{
+  font-size:20px;
+}
+.bx-copy-alt, .bx-heart, .bx-pin, .bx-share-alt, .bx-star, .bxs-coupon, .bxs-heart, .bxs-pin, .bxs-star, .box-details {
+  font-size: 30px !important;
+}
+.bxs-heart{
+  color:red;
+}
+.bxs-star{
+  color:#daa520;
+}
+@media (max-width:768px){
+  .movie-detail-banner{
+    max-width:initial;
+  }
+}
+
