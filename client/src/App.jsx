@@ -8,6 +8,7 @@ import EventEdit from './components/events/event-edit/EventEdit.jsx';
 
 
 import AuthGuard from './guards/AuthGuard.jsx';
+import AuthUser from './guards/AuthUser.jsx';
 import AuthAdmin from './guards/AuthAdmin.jsx';
 
 
@@ -62,7 +63,9 @@ export default function App() {
               </Route>
 
 
-              <Route path="/profile" element={<Profile />} />
+              <Route element={<AuthUser />}>
+                <Route path="/profile" element={<Profile />} />
+              </Route>
 
 
               <Route element={<AuthAdmin />}>
