@@ -31,7 +31,7 @@ import EventConcerts from './components/events/event-concerts/EventConcerts.jsx'
 import EventAdd from './components/events/event-add/EventAdd.jsx';
 import EventDetails from './components/events/event-details/EventDetails.jsx';
 import Users from './components/home/users/Users.jsx';
-
+import Profile from './components/home/profile/Profile.jsx';
 
 export default function App() {
 
@@ -58,6 +58,8 @@ export default function App() {
 
               <Route path="/events/:id/edit" element={<EventEdit />} />
 
+
+              <Route path="/profile" element={<Profile />} />
 
 
               <Route path="/users" element={<Users />} />
