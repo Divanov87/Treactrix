@@ -8,6 +8,8 @@ import EventEdit from './components/events/event-edit/EventEdit.jsx';
 
 
 import AuthGuard from './guards/AuthGuard.jsx';
+import AuthAdmin from './guards/AuthAdmin.jsx';
+
 
 
 import Search from './components/home/search/Search.jsx';
@@ -46,7 +48,6 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/events" element={<EventCatalog />} />
-              <Route path="/events/add" element={<EventAdd />} />
               <Route path="/events/theater" element={<EventTheater />} />
               <Route path="/events/concerts" element={<EventConcerts />} />
               <Route path="/events/:eventId/details" element={<EventDetails />} />
@@ -60,13 +61,15 @@ export default function App() {
                 <Route path="/search" element={<Search />} />
               </Route>
 
-              <Route path="/events/:id/edit" element={<EventEdit />} />
-
 
               <Route path="/profile" element={<Profile />} />
 
 
-              <Route path="/users" element={<Users />} />
+              <Route element={<AuthAdmin />}>
+                <Route path="/users" element={<Users />} />
+                <Route path="/events/add" element={<EventAdd />} />
+                <Route path="/events/:id/edit" element={<EventEdit />} />
+              </Route>
 
 
             </Routes>
