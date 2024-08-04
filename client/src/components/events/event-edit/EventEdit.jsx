@@ -31,8 +31,8 @@ export default function EventEdit() {
 
     async function fetchEvent() {
       try {
-        const eventData = await getEvent(id); // Replace with actual API call
-        // Ensure the date is in the correct format
+        const eventData = await getEvent(id);
+ 
         if (eventData.date) {
           eventData.date = new Date(eventData.date).toISOString().split('T')[0];
         }
@@ -50,7 +50,7 @@ export default function EventEdit() {
     switch (name) {
       case 'name':
         if (value.length < 2) error = `Title must be at least 2 characters long. ${2 - value.length} more characters needed.`;
-        if (value.length > 20) error = `Title must be at most 20 characters long. ${value.length - 20} characters too long.`;
+        if (value.length > 35) error = `Title must be at most 35 characters long. ${value.length - 35} characters too long.`;
         break;
       case 'imageUrl':
         if (!/^https?:\/\//.test(value)) error = 'Cover image URL must be a valid URL';
