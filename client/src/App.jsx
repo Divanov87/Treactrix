@@ -7,6 +7,8 @@ import { SearchProvider } from './context/SearchContext.jsx';
 import EventEdit from './components/events/event-edit/EventEdit.jsx';
 
 
+import AuthGuard from './guards/AuthGuard.jsx';
+
 
 import Search from './components/home/search/Search.jsx';
 import Dashboard from './components/home/dashboard/Dashboard.jsx';
@@ -54,7 +56,9 @@ export default function App() {
               <Route path='*' element={<Navigate to={'/404'} />} />
 
 
-              <Route path="/search" element={<Search />} />
+              <Route element={<AuthGuard />}>
+                <Route path="/search" element={<Search />} />
+              </Route>
 
               <Route path="/events/:id/edit" element={<EventEdit />} />
 
