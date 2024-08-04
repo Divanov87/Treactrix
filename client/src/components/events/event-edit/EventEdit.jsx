@@ -4,7 +4,7 @@ import { getEvent, editEvent } from '../../../api/eventAPI';
 
 import styles from '../../events/event-add/EventAdd.module.css';
 
-export default function EditEvent() {
+export default function EventEdit() {
   const [eventForm, setEventForm] = useState({
     name: '',
     imageUrl: '',

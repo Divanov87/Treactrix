@@ -4,6 +4,8 @@ import { Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
 import { SearchProvider } from './context/SearchContext.jsx';
 
+import EventEdit from './components/events/event-edit/EventEdit.jsx';
+
 
 
 import Search from './components/home/search/Search.jsx';
@@ -52,7 +54,7 @@ export default function App() {
 
               <Route path="/search" element={<Search />} />
 
-
+              <Route path="/events/:id/edit" element={<EventEdit />} />
 
 
             </Routes>
