@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 
+import QRCode from 'react-qr-code';
 import Swal from 'sweetalert2';
 
 import {
@@ -16,6 +17,7 @@ import {
 import { useAuth } from '../../../context/AuthContext';
 
 import Loader from '../../loader/Loader';
+import EventMeta from '../event-details/event-meta/EventMeta'
 
 import styles from './EventDetails.module.css';
 
@@ -440,6 +442,7 @@ export default function EventDetail() {
           </>
         })
       </section>
+      {!isLoading && <EventMeta />}
     </article>
   );
 }
