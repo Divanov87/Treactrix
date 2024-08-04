@@ -26,6 +26,7 @@ import NotFound from "./components/not-found/NotFound.jsx";
 import EventCatalog from './components/events/event-catalog/EventCatalog.jsx';
 import EventTheater from './components/events/event-theater/EventTheater.jsx';
 import EventConcerts from './components/events/event-concerts/EventConcerts.jsx';
+import EventAdd from './components/events/event-add/EventAdd.jsx';
 
 export default function App() {
 
@@ -38,6 +39,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/events" element={<EventCatalog />} />
+              <Route path="/events/add" element={<EventAdd />} />
               <Route path="/events/theater" element={<EventTheater />} />
               <Route path="/events/concerts" element={<EventConcerts />} />
               <Route path="/auth/register" element={<Register />} />
