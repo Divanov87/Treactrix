@@ -9,7 +9,7 @@ import styles from './EventAdd.module.css';
 
 
 
-export default function AddEvent() {
+export default function EventAdd() {
   const [eventForm, setEventForm] = useState({
     name: '',
     imageUrl: '',
@@ -129,7 +129,7 @@ export default function AddEvent() {
   };
 
   return (
-    <article className={styles.article}>
+    <article>
       <section className={styles['movie-detail']}>
         <p className={styles['section-subtitle']}>Add Event</p>
         <h2 className={styles['section-title']}>Event details</h2>
