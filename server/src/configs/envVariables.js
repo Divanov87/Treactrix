@@ -1,7 +1,7 @@
 exports.SERVER_NAME = 'Theatrix';
 exports.PORT = 3000;
-exports.DB_CONNECTION = `mongodb://127.0.0.1:27017/${this.SERVER_NAME}DB`;
-//exports.DB_CONNECTION = `mongodb+srv://theatrix:SHEISWASMYSIN87@theatrix.cztq6lz.mongodb.net/?retryWrites=true&w=majority&appName=Theatrix`
+//exports.DB_CONNECTION = `mongodb://127.0.0.1:27017/${this.SERVER_NAME}DB`;
+exports.DB_CONNECTION = `mongodb+srv://theatrix:SHEISWASMYSIN87@theatrix.cztq6lz.mongodb.net/?retryWrites=true&w=majority&appName=Theatrix`
 exports.SALTS = 10; // default - 10
 exports.SECRET = '!D!e09i0n384,s-57vmay3985lhnd95lvn34957vbna738509yl-220fmwni';
 exports.TOKEN_EXPIRATION = 400; //As of Chrome release M104 (August 2022) cookies can no longer set an expiration date more than 400 days
