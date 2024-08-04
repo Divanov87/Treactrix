@@ -438,6 +438,12 @@ export default function EventDetail() {
                   </div>
                 )}
               </div>
+              <div className={styles['download-btn']}>
+                <QRCode title="Send your favourite event quickly to your mobile!" value={window.location.href} bgColor='transparent' fgColor='#e60a15' size={125} />
+                <span className={styles['qr']}>
+                  <span>Scan me!</span>
+                </span>
+              </div>
             </div>
           </>
         })
