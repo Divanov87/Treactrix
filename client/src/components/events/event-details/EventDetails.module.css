@@ -201,7 +201,8 @@
   }
 }
 .btn{
-  color:var(--white);
+  /* color:var(--white); */
+  background:var(--theatrix-red);
   font-size:var(--fs-11);
   text-transform:uppercase;
   letter-spacing:2px;
@@ -209,14 +210,16 @@
   align-items:center;
   gap:10px;
   padding:10px 30px;
-  border:2px solid var(--light-gray);
+  /* border:2px solid var(--light-gray); */
+  border:2px solid var(--theatrix-red);
   border-radius:50px;
   transition:var(--transition-1);
 }
 .btn-primary:is(:hover){
-  background: transparent;
   color: white;
-  border: 1px solid white;
+  border: 2px solid white;
+  background: initial;
+
 
 }
 .sold-out{
@@ -250,5 +253,109 @@
   .movie-detail-banner{
     max-width:initial;
   }
+}
+
+/* .eventComments {
+  margin-top: 20px;
+} */
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.commentForm textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 1.2em;
+  border: none;
+  overflow: auto;
+  outline: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 1);
+}
+
+.comment-button {
+  align-self: flex-end;
+  padding: 7px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  background: red;
+  border-radius: 22px;
+  border: 2px solid red;
+}
+.comment-button:hover{
+  background: none;
+  border: 2px solid white;
+}
+.comment-delete  {
+  padding: 0px 5px;
+  font-size: 0.8em;
+  cursor: pointer;
+  background: red;
+  border-radius: 22px;
+  border: 2px solid red;
+  display: inline-flex;
+}
+.comment-delete:nth-child(3){
+  margin-top: 5px;
+  /* margin-right: 82.3%; */
+}
+.comment-delete:nth-child(4){
+  margin-top: 5px;
+  margin-left: 67.5%;
+}
+.commentList {
+  list-style: none;
+  padding: 0;
+  padding-top: 20px;
+  border-radius: 12px;
+  /* background: rgba(255, 255, 255, 0.51); */
+}
+
+.comment {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 12px;
+  width: 49%;
+  font-family: var(--ff-poppins);
+}
+
+.comment:nth-child(odd) {
+  text-align: left;
+}
+.comment:nth-child(even) {
+
+  text-align: right;
+  color: rgb(37, 37, 150);
+  margin: 0 51%;
+  }
+
+.comment p {
+ margin: 0;
+
+}
+.comment p:nth-child(2) {
+  border-bottom: 1px solid rgb(171, 169, 169);
+  padding: 5px;
+}
+.comment p:last-child{
+  padding-bottom: 20px;
+}
+p ~ i {
+  font-size: 10px;
+  color: gray;
+}
+form textarea {
+  width: 100%;
+  overflow: auto;
+  outline: none;
+}
+li div .comment-delete:first-child {
+   cursor:default;
 }
 
