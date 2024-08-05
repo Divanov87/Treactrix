@@ -446,13 +446,12 @@ export default function EventDetail() {
               </div>
             </div>
           </>
-        })
+        }
       </section>
       {!isLoading && <EventMeta />}
     </article>
   );
 }
-
 
 
 // import { useState, useEffect } from 'react';
