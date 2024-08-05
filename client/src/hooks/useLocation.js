@@ -7,7 +7,7 @@ export default function useLocation() {
         const isSecureConnection = window.location.protocol === 'https:';
 
         if (!isSecureConnection) {
-            console.log('Geolocation not used because the connection is not secure.');
+            console.log('Geo-location not used because the connection is not secure!');
             setCity(null);
             return;
         }
@@ -37,7 +37,7 @@ export default function useLocation() {
                     }
                 );
             } else {
-                console.error('Geolocation is not supported by this browser.');
+                console.error('Geo-location is not supported by this browser.');
                 setCity(null);
             }
         };
