@@ -47,6 +47,9 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * React app + PWA (Progressive Web App)
 * Personalised/User driven home page thats using registered users location
 * GEO location for guest users for personalised event page even for non-registered users!
+* Filter events by city on the go
+* Search
+* Pagination
 * QR code for every event page for quick send to mobile device
 * Admin system - monitoring users (registration ip, login ip, registration date, login date, LIVE ONLINE status)
 * Advanced Comment system
