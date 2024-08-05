@@ -4,6 +4,8 @@ import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import Swal from 'sweetalert2';
 
+import { formatDate, formatDateAdmin } from '../../../libs/dateFormatter';
+
 import {
   getEvent,
   cloneEvent,
@@ -14,6 +16,9 @@ import {
   unlikeEvent,
   unpinEvent,
 } from '../../../api/eventAPI';
+
+import { getComment, addComment, deleteComment, updateComment } from '../../../api/commentAPI.js';
+
 import { useAuth } from '../../../context/AuthContext';
 
 import Loader from '../../loader/Loader';
@@ -21,16 +26,20 @@ import EventMeta from '../event-details/event-meta/EventMeta'
 
 import styles from './EventDetails.module.css';
 
+
 export default function EventDetail() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [event, setEvent] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  const navigate = useNavigate();
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState('');
+  const [editingComment, setEditingComment] = useState(null);
+  const [editedText, setEditedText] = useState('');
 
+  const navigate = useNavigate();
   const { user, isLogged } = useAuth();
-  
   const userId = user?._id;
   const { eventId } = useParams();
 
@@ -48,8 +57,125 @@ export default function EventDetail() {
       }
     };
 
+
+    // const fetchComments = async () => {
+    //   try {
+    //     const response = await fetch(`http://192.168.56.1:3000/comments/${eventId}`);
+    //     const data = await response.json();
+    //     setComments(data);
+    //   } catch (error) {
+    //     console.error('Error fetching comments:', error);
+    //   }
+    // };
+
+    const getComments = async () => {
+      try {
+          const data = await getComment(eventId); // Use the getComment function from your api
+          setComments(data);
+      } catch (error) {
+          console.error('Error fetching comments:', error);
+      }
+  };
+
+
     fetchEvent();
+    getComments();
+  
   }, [eventId]);
+
+  // const handleCommentSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!newComment.trim()) return;
+
+  //   try {
+  //     const response = await fetch(`http://192.168.56.1:3000/comments/${eventId}`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ userId, text: newComment }),
+  //     });
+
+  //     const newCommentData = await response.json();
+  //     setComments(prevComments => [...prevComments, newCommentData]);
+  //     setNewComment('');
+  //   } catch (error) {
+  //     console.error('Error adding comment:', error);
+  //   }
+  // };
+
+    // const handleCommentDelete = async (commentId) => {
+  //   try {
+  //     await fetch(`http://192.168.56.1:3000/comments/${commentId}`, {
+  //       method: 'DELETE',
+  //     });
+  //     setComments(comments.filter(comment => comment._id !== commentId));
+  //   } catch (error) {
+  //     console.error('Error deleting comment:', error);
+  //   }
+  // };
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    if (!newComment.trim()) return;
+
+    try {
+        const commentData = { userId, text: newComment };
+        const newCommentData = await addComment(eventId, commentData); 
+
+        setComments(prevComments => [...prevComments, newCommentData]);
+        setNewComment('');
+    } catch (error) {
+        console.error('Error adding comment:', error);
+    }
+};
+
+
+
+  const handleCommentDelete = async (commentId) => {
+    try {
+        await deleteComment(eventId, commentId);
+        setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+    }
+};
+
+const startEditing = (comment) => {
+  setEditingComment(comment);
+  setEditedText(comment.text);
+};
+
+const handleEditSubmit = async (e) => {
+  e.preventDefault();
+  if (!editedText.trim()) return;
+
+  try {
+      await updateComment(editingComment._id, { text: editedText });
+      const updatedComments = await getComment(eventId);
+      setComments(updatedComments);
+      setEditingComment(null);
+      setEditedText('');
+  } catch (error) {
+      console.error('Error updating comment:', error);
+  }
+};
+
+
+  const maskEmail = (email) => {
+    const [name, domain] = email.split('@');
+    const maskedName = name.slice(0, 2) + '***' + name.slice(-1);
+    return `${maskedName}@${domain}`;
+  };
+
+  // const maskEmail = (email) => {
+  //   if (!email) return 'email not available';
+  //   const [name, domain] = email.split('@');
+  //   const maskedName = name.slice(0, 2) + '***' + name.slice(-1);
+  //   return `${maskedName}@${domain}`;
+  // };
+
+
 
   const CloneEvent = async () => {
     if (user?.role === 'admin') {
@@ -94,13 +220,13 @@ export default function EventDetail() {
 
   const DeleteEvent = async () => {
     if (user?.role === 'admin') {
-    try {
-      await deleteEvent(eventId);
-      navigate('/events');
-    } catch (error) {
-      console.error('Error deleting event:', error);
+      try {
+        await deleteEvent(eventId);
+        navigate('/events');
+      } catch (error) {
+        console.error('Error deleting event:', error);
+      }
     }
-  }
   };
 
   const DeleteDialog = () => {
@@ -134,14 +260,14 @@ export default function EventDetail() {
 
   const BuyTickets = async () => {
     if (user?.role === 'user') {
-    try {
-      await buyTickets(eventData);
-      const updatedEvent = await getEvent(eventId);
-      setEvent(updatedEvent);
-    } catch (error) {
-      console.error('Error buying tickets:', error);
+      try {
+        await buyTickets(eventData);
+        const updatedEvent = await getEvent(eventId);
+        setEvent(updatedEvent);
+      } catch (error) {
+        console.error('Error buying tickets:', error);
+      }
     }
-  }
   };
 
   const BuyDialog = () => {
@@ -316,8 +442,8 @@ export default function EventDetail() {
               </figure>
               <div className={styles['movie-detail-content']}>
                 <p className={styles['detail-subtitle']}>
-                      <b className='badge badge-fill'>{event?.genre}</b> <b className='badge badge-outline'>{event?.restriction}+</b>
-                  </p>
+                  <b className='badge badge-fill'>{event?.genre}</b> <b className='badge badge-outline'>{event?.restriction}+</b>
+                </p>
                 <h1 className={`${styles['h1']} ${styles['detail-title']}`} style={{ textTransform: 'uppercase' }}>{event?.name}</h1>
                 <div className={styles['meta-wrapper']}>
                   <div className={styles['date-time']}>
@@ -329,7 +455,7 @@ export default function EventDetail() {
                     <div>
                       <i className="bx bx-calendar"></i>
                       <time dateTime={event?.date}>
-                        {new Date(event?.date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                        {formatDate(event?.date)}
                       </time>
                     </div>
                     |
@@ -362,7 +488,7 @@ export default function EventDetail() {
 
                     {user?.role === 'admin' && (
                       <>
-                   
+
                         <Link to={`/events/${event?._id}/edit`}>
                           <button className='share'>
                             <i className={`bx bx-edit-alt admin ${styles['box-details']}`}></i>
@@ -381,14 +507,14 @@ export default function EventDetail() {
                           </button>
                         )}
                         {!event?.name?.includes('_') ? (
-                        <button className='share' onClick={CloneEvent}>
-                          <i className={`bx bx-copy-alt admin ${styles['box-details']}`}></i>
-                          <span>Clone</span>
-                        </button>)
-                        :(<button className='share' onClick={CloneEvent}>
-                          <i className={`bx bxs-error bx-flashing admin  ${styles['box-details']}`}></i>
-                          <span>Cloned!</span>
-                        </button>)}
+                          <button className='share' onClick={CloneEvent}>
+                            <i className={`bx bx-copy-alt admin ${styles['box-details']}`}></i>
+                            <span>Clone</span>
+                          </button>)
+                          : (<button className='share' onClick={CloneEvent}>
+                            <i className={`bx bxs-error bx-flashing admin  ${styles['box-details']}`}></i>
+                            <span>Cloned!</span>
+                          </button>)}
                         <button className='share'>
                           <i className={`bx bxs-coupon admin admin-coupon ${styles['box-details']}`}></i>
                           <span>{event?.ticketsLeft - 1}</span>
@@ -445,6 +571,92 @@ export default function EventDetail() {
                 </span>
               </div>
             </div>
+
+
+
+
+
+
+
+
+
+            <section className='container'>
+            <article className={styles['event-detail']}>
+              <p className={styles['section-subtitle']}>Comments</p>
+              <h2 className={`${styles['h2']} ${styles['section-title']}`}>
+                WHAT PEOPLE ARE <strong>SAYING?</strong>
+              </h2>
+      
+              {isLogged ? (
+                <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
+                  <textarea
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    placeholder="Add a comment..."
+                    required
+                  />
+                  <button type="submit" className={styles['comment-button']}>Send</button>
+                </form>
+              ) : (
+                <p>Please <Link to="/auth/login">login</Link> to add a comment.</p>
+              )}
+      
+              <ul className={styles['commentList']}>
+                {comments.map((comment) => (
+                  <li key={comment._id} className={styles['comment']}>
+                    <div>
+                      <button className={styles['comment-delete']}>
+                        {`${comment.author.username} (${maskEmail(comment.author.email)})`}
+                      </button>
+                      <p>{comment.text}</p>
+                      <i>{formatDateAdmin(comment.createdAt)}</i>
+                      {(userId === comment.author._id || user.role === 'admin') && (
+                        <>
+                          {editingComment && editingComment._id === comment._id ? (
+                            <form onSubmit={handleEditSubmit}>
+                              <textarea
+                                value={editedText}
+                                onChange={(e) => setEditedText(e.target.value)}
+                                required
+                              />
+                              <button type="submit" className={styles['comment-delete']} >Update</button>&nbsp;
+                              <button type="button" onClick={() => setEditingComment(null)} className={styles['comment-delete']} >Cancel</button>
+                            </form>
+                          ) : (
+                            <>
+                              <button className={styles['comment-delete']} onClick={() => startEditing(comment)}>Edit</button>
+                              &nbsp;
+                              <button className={styles['comment-delete']} onClick={() => handleCommentDelete(comment._id)}>Delete</button>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </>
         }
       </section>
@@ -452,6 +664,7 @@ export default function EventDetail() {
     </article>
   );
 }
+
 
 
 // import { useState, useEffect } from 'react';
