@@ -1,13 +1,13 @@
 <div align="center">
 
-  ![GitHub repo size](https://img.shields.io/github/repo-size/Divanov87/Treatrix)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/Divanov87/Treactrix)
   ![GitHub stars](https://img.shields.io/github/stars/Divanov87/Treactrix?style=social)
   ![GitHub forks](https://img.shields.io/github/forks/Divanov87/Treactrix?style=social)
 
 <br />
   <br />
 
-<img src="./client/src/public/assets/images/logo-t.svg" />
+<img src="./client/public/assets/images/logo-t.svg" />
 
 <h2 align="center">Theatrix - Netflix Inspired Theater And Concert Events App</h2>
 
