@@ -1,4 +1,7 @@
 import { Link } from 'react-router-dom';
+
+import { formatDate } from '../../../libs/dateFormatter';
+
 import styles from './EventCard.module.css';
 
 export default function EventCard({_id, imageUrl, name, location, date, duration, rating }) {
@@ -22,7 +25,7 @@ export default function EventCard({_id, imageUrl, name, location, date, duration
           <div className={styles['date-time']}>
             <div>
               <i className="bx bx-calendar"></i>
-              <time dateTime={date}>{new Date(date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</time>
+              <time dateTime={date}>{formatDate(date)}</time>
             </div>
             <div className={styles['duration']}>
               <i className="bx bx-time"></i>
