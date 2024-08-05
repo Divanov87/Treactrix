@@ -1,7 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
+
 import { getUsersActivity} from '../../../api/eventAPI';
 import { useAuth } from '../../../context/AuthContext';
+
+import { formatDateAdmin } from '../../../libs/dateFormatter';
+
 import Loader from '../../loader/Loader';
+
+
 import './Users.css';
 
 export default function Users() {
@@ -103,8 +109,8 @@ export default function Users() {
                     <td data-label="City">{user.city}</td>
                     <td data-label="Registration IP">{user.registrationIp || <span style={{textAlign: 'center'}}>-</span>}</td>
                     <td data-label="Last Login IP">{user.lastLoginIp || <span style={{textAlign: 'center'}}>-</span>}</td>
-                    <td data-label="Registration Date">{new Date(user.registrationDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</td>
-                    <td data-label="Last Login Date">{new Date(user.lastLoginDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' })}</td>
+                    <td data-label="Registration Date">{formatDateAdmin(user.registrationDate)}</td>
+                    <td data-label="Last Login Date">{formatDateAdmin(user.lastLoginDate)}</td>
                     <td data-label="Online">
                       <span className="online-dot" ref={el => (onlineStatusRefs.current[user._id] = el)}></span>
                     </td>
