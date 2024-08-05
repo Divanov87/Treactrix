@@ -610,7 +610,7 @@ const handleEditSubmit = async (e) => {
                       </button>
                       <p>{comment.text}</p>
                       <i>{formatDateAdmin(comment.createdAt)}</i>
-                      {(userId === comment.author._id || user.role === 'admin') && (
+                      {(userId === comment.author._id || user?.role === 'admin') && (
                         <>
                           {editingComment && editingComment._id === comment._id ? (
                             <form onSubmit={handleEditSubmit}>
