@@ -44,11 +44,13 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 ## PROJECT HIGHLIGHTS
 
-* Angular app + PWA (Progressive Web App)
-* Personalised/User driven home page thats using users location
+* React app + PWA (Progressive Web App)
+* Personalised/User driven home page thats using registered users location
+* GEO location for guest users for personalised event page even for non-registered users!
 * QR code for every event page for quick send to mobile device
-* User monitoring (registration ip, login ip, registration date, login date)
-* Custom network speed based preloading service, Custom pipes, Cookies
+* Admin system - monitoring users (registration ip, login ip, registration date, login date, LIVE ONLINE status)
+* Advanced Comment system
+  
 
 ## TECHNOLOGIES
 
@@ -59,14 +61,17 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * cors
 * express
 * jsonwebtoken
+* mongodb
 * mongoose
 
 ### Client:
 
-* angular cli 16.2.14
+* react 18.3.1
+* js-cookie
 * jwt-decode
-* ng-qrcode
-* ngx-cookie-service
+* react-qr-code
+* sweetalert2
+
 
 ## ACTIONS
 
@@ -102,11 +107,11 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 ### Client:
 
 * npm i
-* ng serve to start client on localhost:4200 or ng server --host 0.0.0.0 to bind to every local ip (localhost, 127.0.0.1 and 192.168.XX.XX) to test mobile version for example (make sure u edit environments inside app)
+* npm dev start on http://192.168.56.1:5173/. To test progressive web app and geo-location you will need secure connection (https://)
 
 ## THEATRIX REST API Endpoints:
 
-Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (Angular 16) from http://localhost:4200 (default ports).
+Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (React 18.3.1) from http://192.168.56.1:5173 (default ports).
 
 <table style="width: 804px;">
 <thead>
