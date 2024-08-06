@@ -3,7 +3,6 @@ import { get, post, put, del } from '../libs/request';
 export const BASE_URL = process.env.REACT_APP_API_URL;
 
 
-
 export const getEvent = async (_id) => {
   try {
     const response = await get(`${BASE_URL}/events/${_id}`);
@@ -13,6 +12,16 @@ export const getEvent = async (_id) => {
     throw error;
   }
 };
+
+// export const getEvent = async (_id, signal) => {
+//   try {
+//     const response = await get(`${BASE_URL}/events/${_id}`, null, signal);
+//     return response;
+//   } catch (error) {
+//     console.error('Error in getEvent:', error);
+//     throw error;
+//   }
+// };
 
 
 export const createEvent = async (eventData) => {
@@ -46,6 +55,7 @@ export const deleteEvent = async (_id) => {
     throw error;
   }
 };
+
 
 export const getAllEvents = async () => {
   try {
