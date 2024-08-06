@@ -83,7 +83,7 @@ thead {
 .user-table th{
   cursor:pointer;
   user-select:none;
-  padding-right: 25px;
+  padding-right:15px;
 }
 .user-table th i{
   position:absolute;
@@ -127,17 +127,18 @@ thead {
 }
 
 
-.user-table tbody tr:hover {
+/* .user-table tbody tr:hover {
   background-color: #e0e0e0;
   cursor: pointer;
   border-bottom: 3px solid red;
   border-top: 3px solid red;
-}
+} */
 
 .user-table tbody tr:hover td {
   background-color: red;
   color: white;
   border-right: initial;
+  cursor: pointer;
 }
 .user-table td[data-label="Username"], .user-table td[data-label="City"] {
   text-transform: capitalize;
@@ -152,8 +153,6 @@ thead {
   border-radius: 50%;
   display: inline-block;
 }
-
-
 
 .user-table td[data-label="Online"] {
   text-align: center;
