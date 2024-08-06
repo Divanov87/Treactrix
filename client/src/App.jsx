@@ -26,8 +26,8 @@ const Login = lazy(() => import('./components/auth/login/Login'));
 const Search = lazy(() => import('./components/home/search/Search'));
 const Profile = lazy(() => import('./components/home/profile/Profile'));
 const Users = lazy(() => import('./components/home/users/Users'));
-// const Contacts = lazy(() => import('./components/home/contacts/Contacts')); //TODO
-// const About = lazy(() => import('./components/home/about/About')); //TODO
+const Contacts = lazy(() => import('./components/home/contacts/Contacts'));
+const About = lazy(() => import('./components/home/about/About')); //TODO
 
 import PWABanner  from './components/pwa-banner/PWABanner.jsx';
 import PWABadge from './PWABadge.jsx'
@@ -51,8 +51,8 @@ export default function App() {
           <Route path="/events/:eventId/details" element={<EventDetails />} />
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />
-          {/* <Route path="/contacts" element={<Contacts />} />
-          <Route path="/about" element={<About />} /> */}
+          <Route path="/contacts" element={<Contacts />} />
+           <Route path="/about" element={<About />} />
           <Route path="/404" element={<NotFound />} />
           <Route path='*' element={<Navigate to={'/404'} />} />
 
