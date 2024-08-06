@@ -53,6 +53,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * QR code for every event page for quick send to mobile device
 * Admin system - monitoring users (registration ip, login ip, registration date, login date, LIVE ONLINE status)
 * Advanced Comment system
+* Messaging System (users and guests can send message to admins for questions etc)
   
 
 ## TECHNOLOGIES
