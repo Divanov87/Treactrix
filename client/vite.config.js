@@ -8,7 +8,8 @@ export default defineConfig(({ mode }) => {
   return {
     define: {
       'process.env.REACT_APP_API_URL': JSON.stringify(env.REACT_APP_API_URL),
-      'process.env.REACT_APP_IP_SERVICE_URL': JSON.stringify(env.REACT_APP_IP_SERVICE_URL)
+      'process.env.REACT_APP_IP_SERVICE_URL': JSON.stringify(env.REACT_APP_IP_SERVICE_URL),
+      'process.env.REACT_APP_GEO_LOCATION_API_KEY': JSON.stringify(env.REACT_APP_GEO_LOCATION_API_KEY)
     },
 
   server: {
