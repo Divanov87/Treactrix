@@ -5,7 +5,7 @@ import { getTheaterEvents } from '../../../api/eventAPI';
 import { useEvents } from '../../../hooks/useEvents';
 import { usePagination } from '../../../hooks/usePagination';
 import { usePaginationQuery } from '../../../hooks/usePaginatonQuery';
-import Pagination from '../../../utils/Pagination';
+import Pagination from '../event-pagination/EventPagination';
 
 import styles from '../../home/search/Search.module.css';
 

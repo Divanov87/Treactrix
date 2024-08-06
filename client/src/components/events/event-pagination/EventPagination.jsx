@@ -2,7 +2,7 @@
 
 import { useLocation, useNavigate} from 'react-router-dom';
 
-import './Pagination.css';
+import './EventPagination.css';
 
 export default function Pagination ({ totalPages, currentPage, onPageChange }) {
   const location = useLocation();
