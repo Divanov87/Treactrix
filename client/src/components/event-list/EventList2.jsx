@@ -43,8 +43,8 @@ export default function EventList({ events, title }) {
           {!isLogged && !city && <FilterList handleCityFilter={handleCityFilter} />}
         </div>
         {filteredEvents.length === 0 ? (
-          <h2 className={`${styles.h2} ${styles['section-title']}`}>There are no upcoming events!</h2>
-          // <h2 className={`${styles.h2} ${styles['section-title']}`}>There are no upcoming events in {selectedCity}!</h2>
+          //<h2 className={`${styles.h2} ${styles['section-title']}`}>There are no upcoming events!</h2>
+          <h2 className={`${styles.h2} ${styles['section-title']}`}>There are no upcoming events in {isLogged ? (<b style={{ textTransform: 'capitalize' }}>{user?.location}</b> ) : (<b style={{ textTransform: 'capitalize' }}>{selectedCity}</b> || 'your town')}!</h2>
         ) : (
           <ul className={`${styles['movies-list']} ${styles['has-scrollbar']}`}>
             {filteredEvents.map(event => <EventCard key={event._id} {...event} />)}
