@@ -1,0 +1,126 @@
+.movie-detail{
+  background:url(/assets/images/banner-details.jpg) no-repeat;
+  background-size:cover;
+  background-position:center;
+  padding-bottom:var(--section-padding);
+  background-attachment:fixed;
+  padding-top:100px
+}
+.detail-subtitle{
+  font-size:var(--fs-5);
+  color:var(--theatrix-red);
+  font-weight:var(--fw-700);
+  margin-bottom:10px
+}
+.detail-title{
+  margin-bottom:20px
+}
+.detail-title strong{
+  color:var(--theatrix-red)
+}
+@media (min-width:550px){
+  :root{
+      --fs-1:42px
+  }
+  .container{
+      max-width:540px;
+      margin-inline:auto
+  }
+  .detail-subtitle{
+      --fs-5:22px
+  }
+  .detail-title{
+      --fs-1:46px
+  }
+}
+@media (min-width:768px){
+  :root{
+      --fs-2:36px
+  }
+  .container{
+      max-width:720px
+  }
+  .detail-subtitle{
+      --fs-5:26px
+  }
+  .detail-title{
+      --fs-1:50px
+  }
+}
+@media (min-width:992px){
+  .movie-detail{
+      padding-bottom:200px
+  }
+  .movie-detail .container{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:50px;
+      padding-top:50px
+  }
+}
+@media (min-width:1200px){
+  :root{
+      --fs-1:60px;
+      --fs-4:26px
+  }
+  .container{
+      max-width:1320px
+  }
+  .movie-detail{
+      padding-bottom:var(--section-padding)
+  }
+  .movie-detail-content{
+      max-width:620px;
+      justify-content:center;
+      align-items:center
+  }
+  .detail-title{
+      --fs-1:60px
+  }
+}
+.content{
+  padding:20px;
+  width:1000%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between
+}
+.movie-title{
+  margin-bottom:10px
+}
+.container-reg-log-edit{
+  padding-inline:15px;
+  display:flex;
+  justify-content:center;
+  padding-top:30px
+}
+.wrapper{
+  width:420px;
+  background:0 0;
+  border:2px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(9px);
+  color:#fff;
+  border-radius:12px;
+  padding:30px 40px;
+  padding-inline:15px;
+  display:flex;
+  justify-content:center;
+  padding-top:30px
+}
+.wrapper h1{
+  font-size:36px;
+  text-align:center
+}
+.about-us{
+  width:100%;
+  padding:0
+}
+.big-word{
+  font-size:2em;
+  font-weight:700;
+  color:red;
+  text-transform:uppercase;
+  margin:5px 0
+}
