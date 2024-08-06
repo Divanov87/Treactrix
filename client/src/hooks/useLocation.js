@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+export const API_KEY = process.env.REACT_APP_GEO_LOCATION_API_KEY;
+
 export default function useLocation() {
     const [city, setCity] = useState(null);
 
@@ -19,8 +21,7 @@ export default function useLocation() {
                         try {
                             const { latitude, longitude } = position.coords;
                             console.log(`Geolocation obtained: lat=${latitude}, lon=${longitude}`);
-                            const api_key = '65ea5e84474fa533385611gqk093371';
-                            const geocodingApiUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=${api_key}`;
+                            const geocodingApiUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=${API_KEY}`;
                             const response = await fetch(geocodingApiUrl);
                             const data = await response.json();
                             const city = data.address.city;
