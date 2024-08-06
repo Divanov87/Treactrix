@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
-import { formatDateAdmin } from '../../../../libs/dateFormatter.js';
 import { getComment, addComment, deleteComment, updateComment } from '../../../../api/commentAPI.js';
 import { useAuth } from '../../../../context/AuthContext.jsx';
-import Loader from '../../../loader/Loader.jsx';
+
+import { formatDateAdmin } from '../../../../libs/dateFormatter.js';
+import { maskEmail } from '../../../../libs/emailMasker.js';
 
 import styles from './EventComments.module.css';
 
@@ -89,14 +90,9 @@ const handleEditSubmit = async (e) => {
 };
 
 
-  const maskEmail = (email) => {
-    const [name, domain] = email.split('@');
-    const maskedName = name.slice(0, 2) + '***' + name.slice(-1);
-    return `${maskedName}@${domain}`;
-  };
-
   return (
-    <section className='container'>
+    <section className={styles['movie-detail']}>
+    <section className={styles['container']}>
     <article className={styles['event-detail']}>
       <p className={styles['section-subtitle']}>Comments</p>
       <h2 className={`${styles['h2']} ${styles['section-title']}`}>
@@ -113,15 +109,16 @@ const handleEditSubmit = async (e) => {
           />
           <button type="submit" className={styles['comment-button']}>Send</button>
         </form>
-      ) : (
-        <p>Please <Link to="/auth/login">login</Link> to add a comment.</p>
+      ) : (<>
+        <h2 className={`${styles['h3']} ${styles['section-title']}`}>(Please login to add a comment)</h2>
+        </>
       )}
 
 {comments.length === 0 ? (
 
-        <h2 className={`${styles['h2']} ${styles['section-title']}`}>No comments <strong>yet..</strong> <br/><strong><strike>Love it?</strike></strong> Hate it? Be the first to <strong>share your thoughts!</strong></h2>
+        <h2 className={`${styles['no-comments']}`}>No comments <strong>yet..</strong> <br/><strong><strike>Love it?</strike></strong> Hate it? Be the first to <strong>share your thoughts!</strong></h2>
       ) : (
-      <ul className={styles['commentList']}>
+      <ul className={styles['comment-list']}>
         {comments.map((comment) => (
           <li key={comment._id} className={styles['comment']}>
             <div>
@@ -156,6 +153,7 @@ const handleEditSubmit = async (e) => {
         ))}
       </ul>)}
     </article>
+  </section>
   </section>
   );
 }

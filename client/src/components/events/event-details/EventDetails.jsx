@@ -4,7 +4,8 @@ import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import QRCode from 'react-qr-code';
 import Swal from 'sweetalert2';
 
-import { formatDate, formatDateAdmin } from '../../../libs/dateFormatter.js';
+import { formatDate } from '../../../libs/dateFormatter.js';
+import { shareContent } from '../../../libs/userShare.js';
 
 import {
   getEvent,
@@ -16,8 +17,6 @@ import {
   unlikeEvent,
   unpinEvent,
 } from '../../../api/eventAPI.js';
-
-import { getComment, addComment, deleteComment, updateComment } from '../../../api/commentAPI.js';
 
 import { useAuth } from '../../../context/AuthContext.jsx';
 
@@ -34,11 +33,6 @@ export default function EventDetail() {
   const [event, setEvent] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const [editingComment, setEditingComment] = useState(null);
-  const [editedText, setEditedText] = useState('');
-
   const navigate = useNavigate();
   const { user, isLogged } = useAuth();
   const userId = user?._id;
@@ -46,6 +40,7 @@ export default function EventDetail() {
 
   const eventData = { eventId, userId };
 
+  
   useEffect(() => {
     const fetchEvent = async () => {
       try {
@@ -58,153 +53,38 @@ export default function EventDetail() {
       }
     };
 
-    const getComments = async () => {
-      try {
-          const data = await getComment(eventId);
-          setComments(data);
-      } catch (error) {
-          console.error('Error fetching comments:', error);
-      }
-  };
-
-
     fetchEvent();
 
   }, [eventId]);
 
 
-  const handleCommentSubmit = async (e) => {
-    e.preventDefault();
-    if (!newComment.trim()) return;
+  // AbortController TEST
 
-    try {
-        const commentData = { userId, text: newComment };
-        const newCommentData = await addComment(eventId, commentData); 
+  // useEffect(() => {
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
 
-        setComments(prevComments => [...prevComments, newCommentData]);
-        setNewComment('');
-    } catch (error) {
-        console.error('Error adding comment:', error);
-    }
-};
+  //   const fetchEvent = async () => {
+  //     try {
+  //       const event = await getEvent(eventId, signal);
+  //       setEvent(event);
+  //     } catch (error) {
+  //       if (error.name !== 'AbortError') {
+  //         console.error('Error fetching event:', error);
+  //       }
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
 
+  //   fetchEvent();
 
-  const handleCommentDelete = async (commentId) => {
-    try {
-        await deleteComment(eventId, commentId);
-        setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
-    } catch (error) {
-        console.error('Error deleting comment:', error);
-    }
-};
-
-const startEditing = (comment) => {
-  setEditingComment(comment);
-  setEditedText(comment.text);
-};
-
-const handleEditSubmit = async (e) => {
-  e.preventDefault();
-  if (!editedText.trim()) return;
-
-  try {
-      await updateComment(editingComment._id, { text: editedText });
-      const updatedComments = await getComment(eventId);
-      setComments(updatedComments);
-      setEditingComment(null);
-      setEditedText('');
-  } catch (error) {
-      console.error('Error updating comment:', error);
-  }
-};
-
-
-  const maskEmail = (email) => {
-    const [name, domain] = email.split('@');
-    const maskedName = name.slice(0, 2) + '***' + name.slice(-1);
-    return `${maskedName}@${domain}`;
-  };
-
-  const CloneEvent = async () => {
-    if (user?.role === 'admin') {
-      try {
-        const result = await Swal.fire({
-          title: 'Confirm cloning event?',
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Yes, clone event'
-        });
-
-        if (result.isConfirmed) {
-          const response = await cloneEvent(eventId);
-          Swal.fire({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            icon: 'success',
-            title: `<span style="color: red;">${response}</span> cloned successfully!`,
-            didOpen: (toast) => {
-              toast.addEventListener('mouseenter', Swal.stopTimer);
-              toast.addEventListener('mouseleave', Swal.resumeTimer);
-            }
-          });
-          navigate('/events');
-        }
-      } catch (error) {
-        console.error('Error cloning event:', error);
-      }
-    } else {
-      console.log('Not Authorized!');
-      Swal.fire({
-        title: 'No rights to clone events!',
-        icon: 'error'
-      });
-    }
-  }
-
-
-
-  const DeleteEvent = async () => {
-    if (user?.role === 'admin') {
-      try {
-        await deleteEvent(eventId);
-        navigate('/events');
-      } catch (error) {
-        console.error('Error deleting event:', error);
-      }
-    }
-  };
-
-  const DeleteDialog = () => {
-    if (user?.role === 'admin') {
-      Swal.fire({
-        title: 'Do you really want to \n DELETE \n"' + event?.name + '" ?',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete event',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          DeleteEvent();
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true
-          });
-          Toast.fire({
-            icon: 'success',
-            title: 'Event deleted successfully'
-          });
-        }
-      });
-    } else {
-      Swal.fire('Not Authorized!', '', 'error');
-    }
-  };
-
+  //   return () => {
+  //     controller.abort();
+  //     console.log('AbortController aborted loading!')
+  //     console.log(controller.signal.aborted);
+  //   };
+  // }, [eventId]);
 
   const BuyTickets = async () => {
     if (user?.role === 'user') {
@@ -239,6 +119,7 @@ const handleEditSubmit = async (e) => {
   };
 
   const LikeEvent = async () => {
+    if (user?.role === 'user') {
     try {
       await likeEvent(eventData);
       const updatedEvent = await getEvent(eventId);
@@ -246,9 +127,11 @@ const handleEditSubmit = async (e) => {
     } catch (error) {
       console.error('Error liking event:', error);
     }
+  }
   };
 
   const UnlikeEvent = async () => {
+    if (user?.role === 'user') {
     try {
       await unlikeEvent(eventData);
       const updatedEvent = await getEvent(eventId);
@@ -256,9 +139,11 @@ const handleEditSubmit = async (e) => {
     } catch (error) {
       console.error('Error unliking event:', error);
     }
+  }
   };
 
   const PinEvent = async () => {
+    if (user?.role === 'admin') {
     try {
       await pinEvent(eventData);
       console.log('Event pinned successfully!');
@@ -267,6 +152,7 @@ const handleEditSubmit = async (e) => {
     } catch (error) {
       console.error('Error pinning event:', error);
     }
+  }
   };
 
   const PinDialog = () => {
@@ -307,6 +193,7 @@ const handleEditSubmit = async (e) => {
   }
 
   const UnpinEvent = async () => {
+    if (user?.role === 'admin') {
     try {
       await unpinEvent(eventData);
       const pinnedEvent = await getEvent(eventId);
@@ -314,6 +201,7 @@ const handleEditSubmit = async (e) => {
     } catch (error) {
       console.error('Error unpinning event:', error);
     }
+  }
   };
 
   const UnpinDialog = async () => {
@@ -350,32 +238,89 @@ const handleEditSubmit = async (e) => {
       });
     }
   }
-  // const ReadMore = () => setShowAll(!showAll);
-  const ReadMore = () => setShowAll(showAll !== !showAll);
 
-  const shareContent = async () => {
-    const shareData = {
-      title: 'Theatrix',
-      url: window.location.href,
-    };
+  const CloneEvent = async () => {
+    if (user?.role === 'admin') {
+      try {
+        const result = await Swal.fire({
+          title: 'Confirm cloning event?',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, clone event'
+        });
 
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-        console.log('Content shared successfully');
-      } else {
-        const shareMessage = `Share this content: ${shareData.url}`;
-        if (window.confirm(shareMessage)) {
-          alert('To share this content, copy the URL and share it manually.');
+        if (result.isConfirmed) {
+          const response = await cloneEvent(eventId);
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: 'success',
+            title: `<span style="color: red;">${response}</span> cloned successfully!`,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          navigate('/events');
         }
+      } catch (error) {
+        console.error('Error cloning event:', error);
       }
-    } catch (error) {
-      console.error('Error sharing content:', error);
+    } else {
+      console.log('Not Authorized!');
+      Swal.fire({
+        title: 'No rights to clone events!',
+        icon: 'error'
+      });
+    }
+  }
+
+  const DeleteEvent = async () => {
+    if (user?.role === 'admin') {
+      try {
+        await deleteEvent(eventId);
+        navigate('/events');
+      } catch (error) {
+        console.error('Error deleting event:', error);
+      }
     }
   };
 
+  const DeleteDialog = () => {
+    if (user?.role === 'admin') {
+      Swal.fire({
+        title: 'Do you really want to \n DELETE \n"' + event?.name + '" ?',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete event',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          DeleteEvent();
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Event deleted successfully'
+          });
+        }
+      });
+    } else {
+      Swal.fire('Not Authorized!', '', 'error');
+    }
+  };
+
+  const ReadMore = () => setShowAll(showAll !== !showAll);
+
   return (
-    <article className={styles['event-detail']}>
+    <article>
       <section className={styles['movie-detail']}>
         <p className={styles['section-subtitle']}>Events</p>
         <h2 className={`${styles['h2']} ${styles['section-title']}`}>
@@ -522,8 +467,8 @@ const handleEditSubmit = async (e) => {
             </>
           }
         </section>
-        {!isLoading && <EventComments />}
         {!isLoading && <EventMeta />}
+        {!isLoading && <EventComments />}
       </article>
     );
   };
