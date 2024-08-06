@@ -1,9 +1,11 @@
 @import url("../../../../styles.css");
 
 .upcoming{
-  background-size:cover;
-  background-position:center;
-  padding-block:var(--section-padding)
+  /* background: url(/assets/images/banner-details.jpg) no-repeat; */
+  background-size: cover;
+  background-position: center;
+  padding-block: var(--section-padding);
+  background-attachment: fixed;
 }
 .upcoming .flex-wrapper{
   margin-bottom:50px
@@ -11,30 +13,6 @@
 .upcoming .section-title{
   margin-bottom:30px
 }
-/* .filter-list{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  align-items:center;
-  gap:10px
-} */
-/* .upcoming .filter-btn{
-  color:var(--white);
-  background:var(--raisin-black);
-  font-size:var(--fs-11);
-  font-weight:var(--fw-500);
-  border:2px solid var(--gunmetal-1);
-  padding:12px 26px;
-  border-radius:50px
-} */
-/* .upcoming .filter-btn:hover{
-  background:url(/assets/images/masks.png) no-repeat;
-  background-size:cover
-}
-.upcoming .filter-btn:focus{
-  background:var(--theatrix-red);
-  border:none
-} */
 .upcoming .movies-list>li{
   min-width:100%;
   scroll-snap-align:start
