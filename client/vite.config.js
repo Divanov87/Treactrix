@@ -20,8 +20,8 @@ export default defineConfig(({ mode }) => {
     strategies: 'injectManifest',
     srcDir: 'src',
     filename: 'sw.js',
-    registerType: 'autoUpdate',
-    // registerType: 'prompt',
+    // registerType: 'autoUpdate',
+    registerType: 'prompt',
     injectRegister: 'auto',
     manifest: {
       name: 'Theatrix - Discover Events, Buy Tickets, & More!',
