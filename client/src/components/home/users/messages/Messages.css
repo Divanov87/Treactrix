@@ -1,0 +1,76 @@
+.message-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-bottom:20px;
+  font-size: 12px;
+}
+.message-table td,.message-table th{
+  /* padding: 8px; */
+  color:#fff;
+  position:relative
+}
+.message-table th{
+  cursor:pointer;
+  user-select:none;
+  /* padding-right: 25px; */
+}
+.message-table th i{
+  position:absolute;
+  right:5px;
+  top:50%;
+  transform:translateY(-50%)
+}
+.message-table tbody tr.odd td{
+  background-color: #d8d8d8;
+ 
+}
+.message-table tbody tr td{
+  background-color:#f9f9f9;
+  color:#000;
+  border-right: 1px solid gray;
+}
+@media (max-width:768px){
+  .message-table{
+      overflow-x:auto;
+      display:block
+  }
+  .message-table tbody,.message-table td,.message-table th,.message-table thead,.message-table tr{
+      display:block
+  }
+  .message-table td{
+      text-align:left;
+      border:none;
+      border-bottom:1px solid #ddd;
+      position:relative;
+      padding-left:50%;
+  }
+  .message-table td:before{
+      position:absolute;
+      left:6px;
+      width:45%;
+      padding-right:10px;
+      white-space:nowrap;
+      content:attr(data-label);
+      text-align:left;
+  }
+}
+
+
+
+
+.message-table .new-message {
+  background-color: lightgreen !important;
+}
+
+.message-table .trash-icon {
+  cursor: pointer;
+  color: red;
+}
+
+.message-table .trash-icon:hover {
+  color: white;
+}
+
+.message-table .clicked-message {
+  background-color: white !important;
+}
