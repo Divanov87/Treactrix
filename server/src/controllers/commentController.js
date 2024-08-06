@@ -61,6 +61,35 @@ router.delete('/:commentId',  async (req, res) => {
     }
 });
 
+// router.put('/:commentId', async (req, res) => {
+//     const { commentId } = req.params;
+//     const { text } = req.body;
+
+//     if (!text) {
+//         return res.status(400).json({ message: 'Text is required' });
+//     }
+
+//     try {
+//         const comment = await Comment.findById(commentId);
+
+//         if (!comment) {
+//             return res.status(404).json({ message: 'Comment not found' });
+//         }
+
+//         if (req.user._id.toString() !== comment.author.toString()) {
+//             return res.status(403).json({ message: 'Unauthorized' });
+//         }
+
+//         comment.text = text;
+//         await comment.save();
+
+//         res.status(200).json(comment);
+//     } catch (error) {
+//         console.error('Error updating comment:', error);
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// });
+
 router.put('/:commentId', async (req, res) => {
     const { commentId } = req.params;
     const { text } = req.body;
@@ -76,7 +105,11 @@ router.put('/:commentId', async (req, res) => {
             return res.status(404).json({ message: 'Comment not found' });
         }
 
-        if (req.user._id.toString() !== comment.author.toString()) {
+        const userId = req.user._id.toString();
+        const isAdmin = req.user.role === 'admin';
+        const isAuthor = userId === comment.author.toString();
+
+        if (!isAdmin && !isAuthor) {
             return res.status(403).json({ message: 'Unauthorized' });
         }
 
@@ -89,5 +122,6 @@ router.put('/:commentId', async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 module.exports = router;
