@@ -6,6 +6,7 @@ import { useAuth } from '../../../context/AuthContext';
 import { formatDateAdmin } from '../../../libs/dateFormatter';
 
 import Loader from '../../loader/Loader';
+import Messages from './messages/Messages';
 
 
 import './Users.css';
@@ -120,6 +121,7 @@ export default function Users() {
             </table>
           </div>
         )}
+      <Messages />
       </section>
     </article>
   );
