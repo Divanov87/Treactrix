@@ -57,7 +57,7 @@ export default function Footer() {
 
             <div className={styles['quicklink-wrapper']}>
               <ul className={styles['quicklink-list']}>
-                <li>
+              <li>
                   <Link to="/" className={styles['quicklink-link']}>Faq</Link>
                 </li>
                 <li>
@@ -72,7 +72,7 @@ export default function Footer() {
               </ul>
 
               <ul className={styles['social-list']}>
-              <li>
+                <li>
                   <Link to="https://fb.com/theatrix" className={styles['navbar-social-link']}>
                     <i className='bx bxl-facebook-circle'></i>
                     </Link>
