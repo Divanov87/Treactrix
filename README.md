@@ -35,8 +35,7 @@
 
 [](https://github.com/Divanov87/Treactrix#about)
 
-**Theatrix** is a place for event holders represented as admins and customers in face of users that can interact seamlessly.. 
-
+**Theatrix** is a place for event holders represented as admins and customers in face of users that can interact seamlessly..
 
 Theatrix as a **PWA (Progressive Web App)** can be seen in action at this address:
 
@@ -45,18 +44,17 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 ## PROJECT HIGHLIGHTS
 
 * React app + PWA (Progressive Web App)
-* Personalised/User driven home page thats using registered users location
+* Cookies so users dont have to login everytime..
+* Personalised/User driven home page thats using registered users location or their geo-location
 * GEO location for guest users for personalised event page even for non-registered users!
 * Filter events by city on the go
-* Search
-* Pagination
+* CRUD/Search/Pagination/..
 * QR code for every event page for quick send to mobile device
 * Admin system - monitoring users (registration ip, login ip, registration date, login date, LIVE ONLINE status)
 * Advanced Comment system
 * Messaging System (users and guests can send message to admins for questions etc)
 * Bulletin System (users can subscribe and unsubscribe at will)
-
-  
+* partial multilanguage**
 
 ## TECHNOLOGIES
 
@@ -80,8 +78,6 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * sweetalert2
 * emoji-picker-react (for user comments/disabled)
 
-
-
 ## ACTIONS
 
 [](https://github.com/Divanov87/Treactrix#actions)
@@ -95,7 +91,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 ### Users:
 
 * **Event Browsing:** Users can explore theater and concert events by category, search individually, and filter results by category, city, and year.
-* ** Upon entering the site will be able to allow access to their location which will display only events in their city or close to their city.
+* **Location based experience:** Upon entering the site will be able to allow access to their location which will display only events in their city or close to their city.
 * **Personalized Homepage:** Upon registration, users are redirected to a user drived, personalized homepage showcasing top-rated and local theater and concert events.
 * **Profile Management:** In their profile page, users can view and manage* (remove likes and buy tickets directly for liked events TODO) their liked events and track recent purchases.
 * **Ticket Purchase:** Users can buy tickets directly for events they are interested in, and they can also see how many tickets are left for a particular event.
@@ -103,7 +99,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 **Additional Features:**
 
 * **QR Code Integration:** Every user, admin or guest can see in right corner of every theater or concert event page a QR Code badge that can scan and so he can quickly sent that associated event page to their mobile device like phone or tablet so they can tranfer their journey on the go quickly.
-* **Geolocation Functionality: Geolocation functionality for guests allows location-based services for non-registered users and thuse enriching their experience. There is also plans for IP geolocation but its postponed as of now since mobile data isnt realiable for users location.
+* **Geolocation Functionality:** Geolocation functionality for guests allows location-based services for non-registered users and thuse enriching their experience. There is also plans for IP geolocation but its postponed as of now since mobile data isnt realiable for users location.
 
 ## HOW TO
 
@@ -119,8 +115,12 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * npm i
 * npm dev start on http://192.168.56.1:5173/. To test progressive web app and geo-location you will need secure connection (https://)
 
-### Notes: TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here",
-then proceed with registration.
+### Notes: 
+
+```latex
+$${\color{red}TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here", then proceed with registration.
+```
+
 
 ## THEATRIX REST API Endpoints (w/o Comments, Messages, Bulletin endpoints):
 
@@ -367,4 +367,3 @@ Server and client are configured to work on localhost. Server (Express REST API)
     <br />
   <img src="./preview-images/pwa-test2.jpg" />
   <img src="./preview-images/pwa-test3.jpg" />
-
