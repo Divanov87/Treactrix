@@ -570,6 +570,7 @@ div:where(.swal2-icon).swal2-warning, div:where(.swal2-icon).swal2-error {
 .bx-heart:hover {
 color: #FF1B96;
 }
+
 .bxl-facebook-circle,.bxl-instagram-alt{
   font-size:27px
 }
