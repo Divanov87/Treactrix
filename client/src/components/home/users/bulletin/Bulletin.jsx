@@ -41,7 +41,7 @@ export default function Bulletin() {
     <article>
       <section className="movie-detail">
         <p className="section-subtitle">subscribers</p>
-        <h2 className="h2 section-title">Bulletin<strong>Subscriptions</strong></h2>
+        <h2 className="h2 section-title">Bulletin <strong>Subscriptions</strong></h2>
         {message && <p className='error'>{message}</p>}
         <div className="container">
           <table className="user-table">

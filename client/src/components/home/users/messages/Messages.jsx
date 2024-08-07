@@ -35,7 +35,7 @@ export default function Messages() {
   return (
     <article>
       <section className="movie-detail">
-        <p className="section-subtitle">Messages</p>
+        <p className="section-subtitle">Questions</p>
         <h2 className="h2 section-title">User <strong>Messages</strong></h2>
         <div className="container">
           <table className="user-table">
