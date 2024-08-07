@@ -7,6 +7,7 @@ import { formatDateAdmin } from '../../../libs/dateFormatter';
 
 import Loader from '../../loader/Loader';
 import Messages from './messages/Messages';
+import Bulletin from './bulletin/Bulletin';
 
 
 import './Users.css';
@@ -122,6 +123,7 @@ export default function Users() {
           </div>
         )}
       <Messages />
+      <Bulletin />
       </section>
     </article>
   );
