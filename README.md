@@ -55,6 +55,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * Advanced Comment system
 * Messaging System (users and guests can send message to admins for questions etc)
 * Bulletin System (users can subscribe and unsubscribe at will)
+
   
 
 ## TECHNOLOGIES
@@ -117,6 +118,9 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 * npm i
 * npm dev start on http://192.168.56.1:5173/. To test progressive web app and geo-location you will need secure connection (https://)
+
+### Notes: TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here",
+then proceed with registration.
 
 ## THEATRIX REST API Endpoints (w/o Comments, Messages, Bulletin endpoints):
 
