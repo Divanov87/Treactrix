@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Swal from 'sweetalert2';
 
@@ -8,6 +9,9 @@ import { addMessage } from '../../../api/messageAPI';
 import styles from '../../auth/register/Register.module.css';
 
 export default function Contacts() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,6 +69,7 @@ export default function Contacts() {
         if (result.isConfirmed) {
           try {
             await addMessage(formData);
+            navigate('/');
             Swal.fire({
               icon: 'success',
               title: 'Message sent successfully',
