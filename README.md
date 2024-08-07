@@ -118,7 +118,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 ### Notes: 
 
 ```latex
-$${\color{red}TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here", then proceed with registration.
+$${\color{red}TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here", then proceed with registration.}$$
 ```
 
 
