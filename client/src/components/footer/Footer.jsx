@@ -58,34 +58,34 @@ export default function Footer() {
             <div className={styles['quicklink-wrapper']}>
               <ul className={styles['quicklink-list']}>
                 <li>
-                  <Link to="#" className={styles['quicklink-link']}>Faq</Link>
+                  <Link to="/" className={styles['quicklink-link']}>Faq</Link>
                 </li>
                 <li>
-                  <Link to="#" className={styles['quicklink-link']}>Help center</Link>
+                  <Link to="/" className={styles['quicklink-link']}>Help center</Link>
                 </li>
                 <li>
-                  <Link to="#" className={styles['quicklink-link']}>Terms of use</Link>
+                  <Link to="/" className={styles['quicklink-link']}>Terms of use</Link>
                 </li>
                 <li>
-                  <Link to="#" className={styles['quicklink-link']}>Privacy</Link>
+                  <Link to="/" className={styles['quicklink-link']}>Privacy</Link>
                 </li>
               </ul>
 
               <ul className={styles['social-list']}>
-                <li>
-                  <a href="https://fb.com/theatrix" className={styles['navbar-social-link']}>
+              <li>
+                  <Link to="https://fb.com/theatrix" className={styles['navbar-social-link']}>
                     <i className='bx bxl-facebook-circle'></i>
-                  </a>
+                    </Link>
                 </li>
                 <li>
-                  <a href="https://instagram.com/theatrix" className={styles['navbar-social-link']}>
+                  <Link to="https://instagram.com/theatrix" className={styles['navbar-social-link']}>
                     <i className='bx bxl-instagram-alt'></i>
-                  </a>
+                    </Link>
                 </li>
                 <li>
-                  <a href="https://youtube.com/theatrix" className={styles['navbar-social-link']}>
+                  <Link to="https://youtube.com/theatrix" className={styles['navbar-social-link']}>
                     <i className='bx bxl-youtube'></i>
-                  </a>
+                    </Link>
                 </li>
               </ul>
             </div>
