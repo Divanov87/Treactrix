@@ -54,6 +54,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * Admin system - monitoring users (registration ip, login ip, registration date, login date, LIVE ONLINE status)
 * Advanced Comment system
 * Messaging System (users and guests can send message to admins for questions etc)
+* Bulletin System (users can subscribe and unsubscribe at will)
   
 
 ## TECHNOLOGIES
