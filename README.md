@@ -74,7 +74,10 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * js-cookie
 * jwt-decode
 * react-qr-code
+* react-i18next
 * sweetalert2
+* emoji-picker-react (for user comments/disabled)
+
 
 
 ## ACTIONS
@@ -85,19 +88,20 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 * **Event Management:** Administrators can easily create, edit, and delete events such as concerts and theater performances.
 * **Highlighting Important Events:** They have the option to feature important events on the first page using a pin button.
-* **Monitoring Tools:** Administrators can monitor user interactions, including tracking purchases and the number of purchases made for marketing purposes (TODO). They can also view user IP addresses during registration and last login, as well as registration and last login dates, including their city and email, for further marketing insights.
+* **Monitoring Tools:** Administrators can monitor user interactions, including tracking purchases and the number of purchases made for marketing purposes (TODO). They can also view user IP addresses during registration and last login ip, as well as registration and last login dates, including their city and email, for further marketing insights. Can track which user is online (live). Can receive messages from contact form. Can track subscribers + unsubscribe on users request if user is unable to unsubscribe for some reason.
 
 ### Users:
 
 * **Event Browsing:** Users can explore theater and concert events by category, search individually, and filter results by category, city, and year.
-* **Personalized Homepage:** Upon registration, users are redirected to a user drived, personalized homepage showcasing top-rated and local theater and convert events.
+* ** Upon entering the site will be able to allow access to their location which will display only events in their city or close to their city.
+* **Personalized Homepage:** Upon registration, users are redirected to a user drived, personalized homepage showcasing top-rated and local theater and concert events.
 * **Profile Management:** In their profile page, users can view and manage* (remove likes and buy tickets directly for liked events TODO) their liked events and track recent purchases.
 * **Ticket Purchase:** Users can buy tickets directly for events they are interested in, and they can also see how many tickets are left for a particular event.
 
 **Additional Features:**
 
 * **QR Code Integration:** Every user, admin or guest can see in right corner of every theater or concert event page a QR Code badge that can scan and so he can quickly sent that associated event page to their mobile device like phone or tablet so they can tranfer their journey on the go quickly.
-* **Geolocation Functionality (TODO/POC):** Geolocation functionality for guests allows location-based services for non-registered users and thuse enriching their experience. There is also plans for IP geolocation but its postponed as of now since mobile data isnt realiable for users location.
+* **Geolocation Functionality: Geolocation functionality for guests allows location-based services for non-registered users and thuse enriching their experience. There is also plans for IP geolocation but its postponed as of now since mobile data isnt realiable for users location.
 
 ## HOW TO
 
@@ -113,7 +117,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * npm i
 * npm dev start on http://192.168.56.1:5173/. To test progressive web app and geo-location you will need secure connection (https://)
 
-## THEATRIX REST API Endpoints:
+## THEATRIX REST API Endpoints (w/o Comments, Messages, Bulletin endpoints):
 
 Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (React 18.3.1) from http://192.168.56.1:5173 (default ports).
 
