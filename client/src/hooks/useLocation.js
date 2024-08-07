@@ -24,7 +24,8 @@ export default function useLocation() {
                             const geocodingApiUrl = `https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}&api_key=${API_KEY}`;
                             const response = await fetch(geocodingApiUrl);
                             const data = await response.json();
-                            const city = data.address.city;
+                            // const city = data.address.city;
+                            const city = data.address.city_district;
                             console.log(`City obtained from geocoding: ${city}`);
                             setCity(city);
                         } catch (error) {
